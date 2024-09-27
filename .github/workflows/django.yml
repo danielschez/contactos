@@ -32,10 +32,8 @@ jobs:
       run: |
         python manage.py test
 
-    - name: Notification
-      uses: rtCamp/action-slack-notify@v2.1.1
+    - uses: actions/checkout@v4
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}  # Cambié "WEBHOOK" a "SLACK_WEBHOOK"
-      with:
-        author_name: "Action"
-        fields: repo,message,commit,author,action,eventName
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
