@@ -32,11 +32,9 @@ jobs:
           python manage.py test
 
       - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2.1.1
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        with:
-          author_name: "Action"
-          fields: repo,message,commit,author,action,eventName
-
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+      
 
